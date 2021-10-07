@@ -1,0 +1,45 @@
+{
+    "type": "project",
+    "license": "proprietary",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.3",
+        "doctrine/orm": "^2.10",
+        "knplabs/knp-components": "^3.1",
+        "symfony/http-foundation": "^5.3",
+        "symfony/routing": "^5.3",
+        "symfony/serializer": "^5.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "RestPaginateur\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RestPaginateur\\Tests\\": "tests/"
+        }
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "5.3.*"
+        }
+    },
+    "require-dev": {
+        "atoum/atoum": "^4.0",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "symfony/var-dumper": "5.3.*"
+    }
+}
