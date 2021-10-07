@@ -1,8 +1,6 @@
 {
-    "type": "project",
+    "type": "library",
     "license": "proprietary",
-    "minimum-stability": "stable",
-    "prefer-stable": true,
     "require": {
         "php": "^7.3",
         "doctrine/orm": "^2.10",
@@ -41,5 +39,5 @@
         "atoum/atoum": "^4.0",
         "friendsofphp/php-cs-fixer": "^3.0",
         "symfony/var-dumper": "5.3.*"
-    }
+    },
 }
