@@ -6,13 +6,12 @@
 
 namespace RestPaginateur\Service;
 
-use Doctrine\ORM\QueryBuilder;
 use Knp\Component\Pager\PaginatorInterface;
 use RestPaginateur\Entity\Pagination;
 use RestPaginateur\Factory\PaginationFactory;
 use Symfony\Component\HttpFoundation\Request;
 
-class Paginateur implements PaginateurInterface
+class KnpPaginateur implements PaginateurInterface
 {
     /** @var PaginatorInterface */
     private $paginator;
@@ -33,13 +32,13 @@ class Paginateur implements PaginateurInterface
      */
     public function paginer(
         Request $request,
-        QueryBuilder $queryBuilder,
+        $target,
         int $nombreParPage = self::NOMBRE_PAR_PAGE
     ): Pagination {
         $page = $request->get('page', 1);
 
         $pagination = $this->paginator->paginate(
-            $queryBuilder,
+            $target,
             $page,
             $nombreParPage,
             [

@@ -12,3 +12,7 @@ services:
     RestPaginateur\:
         resource: '../src/*'
         exclude: '../src/{Entity}'
+
+    RestPaginateur\Service\PaginateurInterface:
+        public: true
+        class: RestPaginateur\Service\KnpPaginateur

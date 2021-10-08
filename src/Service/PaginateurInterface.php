@@ -16,10 +16,11 @@ interface PaginateurInterface
 
     /**
      * Retourne la pagination.
+     * @param QueryBuilder|array $target
      */
     public function paginer(
         Request $request,
-        QueryBuilder $queryBuilder,
+        $target,
         int $nombreParPage = self::NOMBRE_PAR_PAGE
     ): Pagination;
 }
