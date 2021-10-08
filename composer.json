@@ -6,7 +6,7 @@
     "require": {
         "php": "^7.3",
         "doctrine/orm": "^2.10",
-        "knplabs/knp-components": "^3.1",
+        "knplabs/knp-paginator-bundle": "^5.4",
         "symfony/dependency-injection": "^5.3",
         "symfony/http-foundation": "^5.3",
         "symfony/http-kernel": "^5.3",
