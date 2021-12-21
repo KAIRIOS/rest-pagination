@@ -32,10 +32,10 @@ class KnpPaginateur implements PaginateurInterface
      */
     public function paginer(
         Request $request,
-        $target,
-        int $nombreParPage = self::NOMBRE_PAR_PAGE
+        $target
     ): Pagination {
         $page = $request->get('page', 1);
+        $nombreParPage = $request->get('per_page', self::NOMBRE_PAR_PAGE);
 
         $pagination = $this->paginator->paginate(
             $target,
