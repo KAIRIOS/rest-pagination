@@ -13,6 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class KnpPaginateur extends test
 {
+    private const PAGE = 2;
+    private const PER_PAGE = 10;
+
     private $paginator;
     private $paginationFactory;
 
@@ -38,23 +41,29 @@ class KnpPaginateur extends test
     {
         $this
         ->given(
-            $request = $this->getRequest(),
+            $request = $this->getRequest(self::PAGE, self::PER_PAGE),
             $target = [1, 2, 3],
-            $nombreParPage = 10,
             $tested = $this->getTestedInstance()
         )
-        ->object($tested->paginer($request, $target, $nombreParPage))
+        ->object($tested->paginer($request, $target))
             ->isInstanceOf(Pagination::class)
-        ->mock($this->paginator)->call('paginate')->once()
+        ->mock($this->paginator)->call('paginate')->withArguments($target, self::PAGE, self::PER_PAGE, ['wrap-queries' => true])->once()
         ->mock($this->paginationFactory)->call('creer')->once()
         ;
     }
 
-    private function getRequest(): Request
+    private function getRequest(int $page, int $perPage): Request
     {
         $this->getMockGenerator()->orphanize('__construct');
         $mock = new \mock\Symfony\Component\HttpFoundation\Request();
-        $this->calling($mock)->get = 5;
+        $this->calling($mock)->get = function(string $key, $default = null) use ($page, $perPage) {
+            if ('page' === $key) {
+                return $page;
+            }
+            if ('per_page' === $key) {
+                return $perPage;
+            }
+        };
 
         return $mock;
     }

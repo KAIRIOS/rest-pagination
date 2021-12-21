@@ -20,7 +20,6 @@ interface PaginateurInterface
      */
     public function paginer(
         Request $request,
-        $target,
-        int $nombreParPage = self::NOMBRE_PAR_PAGE
+        $target
     ): Pagination;
 }
