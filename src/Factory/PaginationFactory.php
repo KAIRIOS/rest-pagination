@@ -12,8 +12,7 @@ use Symfony\Component\Routing\RouterInterface;
 
 class PaginationFactory
 {
-    /** @var RouterInterface */
-    private $router;
+    private RouterInterface $router;
 
     public function __construct(
         RouterInterface $router

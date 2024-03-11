@@ -13,10 +13,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait ControllerTrait
 {
-    /**
-     * @var SerializerInterface
-     */
-    private $serializer;
+    private SerializerInterface $serializer;
 
     public function getContext(array $context = []): array
     {
@@ -30,11 +27,13 @@ trait ControllerTrait
         Pagination $pagination,
         array $context = []
     ): JsonResponse {
-        if ($this->serializer) {
-            $reponse = new JsonResponse($this->serializer->normalize($pagination->getElements(), null, $this->getContext($context)));
-        } else {
-            $reponse = new JsonResponse($pagination->getElements());
-        }
+        $reponse = new JsonResponse(
+            $this->serializer->normalize(
+                $pagination->getElements(),
+                null,
+                $this->getContext($context)
+            )
+        );
 
         if (1 < $pagination->getTotalPage()) {
             // Si il y a plusieurs pages alors on retourne une 206
