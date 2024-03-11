@@ -11,23 +11,17 @@ use Symfony\Component\Routing\RouterInterface;
 
 class Pagination
 {
-    /** @var RouterInterface */
-    private $router;
+    private RouterInterface $router;
 
-    /** @var Request */
-    private $request;
+    private Request $request;
 
-    /** @var array */
-    private $elements;
+    private array $elements;
 
-    /** @var int */
-    private $totalElements;
+    private int $totalElements;
 
-    /** @var int */
-    private $page;
+    private int $page;
 
-    /** @var int */
-    private $elementsParPage;
+    private int $elementsParPage;
 
     public function __construct(
         RouterInterface $router,

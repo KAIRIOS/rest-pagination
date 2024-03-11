@@ -13,11 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class KnpPaginateur implements PaginateurInterface
 {
-    /** @var PaginatorInterface */
-    private $paginator;
+    private PaginatorInterface $paginator;
 
-    /** @var PaginationFactory */
-    private $paginationFactory;
+    private PaginationFactory $paginationFactory;
 
     public function __construct(
         PaginatorInterface $paginator,

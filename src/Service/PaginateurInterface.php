@@ -16,6 +16,7 @@ interface PaginateurInterface
 
     /**
      * Retourne la pagination.
+     *
      * @param QueryBuilder|array $target
      */
     public function paginer(

@@ -4,7 +4,7 @@
     "type": "library",
     "license": "proprietary",
     "require": {
-        "php": "^7.3",
+        "php": "^7.4",
         "doctrine/orm": "^2.10",
         "knplabs/knp-paginator-bundle": "^5.4",
         "symfony/dependency-injection": "^5.3",
