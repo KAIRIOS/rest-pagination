@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait ControllerTrait
 {
-    private SerializerInterface $serializer;
+    private ?SerializerInterface $serializer = null;
 
     public function getContext(array $context = []): array
     {
