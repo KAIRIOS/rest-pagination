@@ -27,13 +27,17 @@ trait ControllerTrait
         Pagination $pagination,
         array $context = []
     ): JsonResponse {
-        $reponse = new JsonResponse(
-            $this->serializer->normalize(
-                $pagination->getElements(),
-                null,
-                $this->getContext($context)
-            )
-        );
+        if (null !== $this->serializer) {
+            $reponse = new JsonResponse(
+                $this->serializer->normalize(
+                    $pagination->getElements(),
+                    null,
+                    $this->getContext($context)
+                )
+            );
+        } else {
+            $reponse = new JsonResponse($pagination->getElements());
+        }
 
         if (1 < $pagination->getTotalPage()) {
             // Si il y a plusieurs pages alors on retourne une 206
